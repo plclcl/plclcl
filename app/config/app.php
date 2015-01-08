@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YourSecretKey!!!',
+	'key' => 'FLHjlVX6FVv9a0r1Lzd96s2nb1E28TB4',
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -122,6 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+
 	),
 
 	/*

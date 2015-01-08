@@ -13,5 +13,8 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('portada.index');
 });
+
+Route::controller('/p','DocenteController');
+Route::controller('/d','UnidadController');
