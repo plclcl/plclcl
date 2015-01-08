@@ -2,7 +2,7 @@
 @section('contenido')
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-             {{Form::open(array('url'=>'/p/add','method'=>'post','class'=>"form-horizontal", 'role'=>"form"))}}
+             {{Form::open(array('url'=>'/p/add','method'=>'post','class'=>"form-horizontal", 'role'=>"form",'id'=>'formularioDocente'))}}
                 <fieldset>
 
                     <!-- Form Name -->
@@ -14,7 +14,7 @@
                         {{Form::label('rut','RUT',array('class'=>"col-sm-2 control-label" ,'for'=>"textinput"))}}
 
                         <div class="col-sm-10">
-                            {{Form::text('rut',$value=null,array('placeholder'=>"12.345.678-9", 'class'=>"form-control"))}}
+                            {{Form::text('rut',$value=null,array('placeholder'=>"12.345.678-9", 'class'=>"form-control",'id'=>"textinput"))}}
                             {{$errors->first('rut')}}
                         </div>
                     </div>
@@ -54,5 +54,19 @@
                 </fieldset>
             {{Form::close()}}
         </div><!-- /.col-lg-12 -->
-    </div><!--
+    </div>
+
+<script type="text/javascript">
+    var $inputRut = $('#textinput');
+    $inputRut.Rut({
+        on_error: function(){
+            $inputRut.closest("div").addClass("has-error");
+        },
+        on_success: function(){
+            $inputRut.closest("div").removeClass("has-error");
+            $inputRut.closest("div").addClass("has-success has-feedback");
+        }
+    });
+</script>
+
 @stop
