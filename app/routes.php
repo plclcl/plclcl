@@ -18,3 +18,4 @@ Route::get('/', function()
 
 Route::controller('/p','DocenteController');
 Route::controller('/d','UnidadController');
+Route::controller('/t','TestController');
