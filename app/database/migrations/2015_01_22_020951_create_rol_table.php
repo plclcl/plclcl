@@ -3,18 +3,18 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateUnidadTable extends Migration {
+class CreateRolTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('unidad', function(Blueprint $table) {
+		Schema::create('rol', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('nombre');
+			$table->string('tipo_rol');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('unidad');
+		Schema::drop('rol');
 	}
 }

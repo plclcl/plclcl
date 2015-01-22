@@ -9,8 +9,8 @@ class CreateAsignaturaCarreraTable extends Migration {
 	{
 		Schema::create('asignatura_carrera', function(Blueprint $table) {
 			$table->increments('id');
-			$table->bigInteger('curso_id');
-			$table->bigInteger('asignatura_id');
+			$table->bigInteger('curso_id')->unsigned();
+			$table->bigInteger('asignatura_id')->unsigned();
 		});
 	}
 

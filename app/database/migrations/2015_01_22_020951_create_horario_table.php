@@ -3,17 +3,17 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePlanificacionTable extends Migration {
+class CreateHorarioTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('planificacion', function(Blueprint $table) {
+		Schema::create('horario', function(Blueprint $table) {
 			$table->increments('id');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('planificacion');
+		Schema::drop('horario');
 	}
 }

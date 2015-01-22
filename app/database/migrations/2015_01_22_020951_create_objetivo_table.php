@@ -3,19 +3,18 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateDepartamentoTable extends Migration {
+class CreateObjetivoTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('departamento', function(Blueprint $table) {
+		Schema::create('objetivo', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('nombre');
-			$table->bigInteger('fk_facultad');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('departamento');
+		Schema::drop('objetivo');
 	}
 }

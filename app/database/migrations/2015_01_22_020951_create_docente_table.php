@@ -15,7 +15,7 @@ class CreateDocenteTable extends Migration {
 			$table->string('apellidomaterno');
 			$table->string('genero');
 			$table->softDeletes();
-			$table->bigInteger('fk_departamento');
+			$table->bigInteger('fk_departamento')->unsigned();
 		});
 	}
 

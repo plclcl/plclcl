@@ -3,18 +3,19 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateContenidoTable extends Migration {
+class CreateDepartamentoTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('contenido', function(Blueprint $table) {
+		Schema::create('departamento', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('nombre');
+			$table->bigInteger('fk_facultad')->unsigned();
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('contenido');
+		Schema::drop('departamento');
 	}
 }

@@ -3,17 +3,18 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEvaluacionTable extends Migration {
+class CreatePermisoTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('evaluacion', function(Blueprint $table) {
+		Schema::create('permiso', function(Blueprint $table) {
 			$table->increments('id');
+			$table->string('tipo_permiso');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('evaluacion');
+		Schema::drop('permiso');
 	}
 }
