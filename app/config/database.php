@@ -66,7 +66,7 @@ return array(
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
-			'database' => 'tablasSolas',
+			'database' => 'plclcl',
 			'username' => 'postgres',
 			'password' => 'prueba',
 			'charset'  => 'utf8',

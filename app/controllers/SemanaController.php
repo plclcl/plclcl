@@ -1,6 +1,6 @@
 <?php
 
-class TestController extends BaseController {
+class SemanaController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -18,14 +18,6 @@ class TestController extends BaseController {
 	public function showWelcome()
 	{
 		return View::make('hello');
-	}
-
-	public function portada(){
-		return $this->layout->contenido = View::make('portada.index');
-	}
-
-	public function semana(){
-		return $this->layout->contenido = View::make('semana.add');
 	}
 
 }

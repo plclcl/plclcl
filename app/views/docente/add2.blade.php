@@ -32,13 +32,33 @@
 
                     <!-- Text input-->
                     <div class="form-group">
-                        {{Form::label('apellidos','Apellidos',array('class'=>"col-sm-2 control-label" ,'for'=>"textinput"))}}
+                        {{Form::label('apellidopaterno', 'Apellido Paterno:',array('class'=>"col-sm-2 control-label" ,'for'=>"textinput"))}}
+
 
                         <div class="col-sm-10">
-                            {{Form::text('apellidos',$value=null,array('placeholder'=>"Apellidos", 'class'=>"form-control"))}}
-                            {{$errors->first('apellidos')}}
+                            {{Form::text('apellidopaterno',$value=null,array('placeholder'=>"Apellidos", 'class'=>"form-control"))}}
+                            {{$errors->first('apellidopaterno')}}
                         </div>
                     </div>
+                    <!-- Apellido Materno-->
+                    <div class="form-group">
+                        {{Form::label('apellidomaterno', 'Apellidomaterno:',array('class'=>"col-sm-2 control-label" ,'for'=>"textinput"))}}
+
+                        <div class="col-sm-10">
+                            {{Form::text('apellidomaterno',$value=null,array('placeholder'=>"Apellidos", 'class'=>"form-control"))}}
+                            {{$errors->first('apellidomaterno')}}
+                        </div>
+                    </div>
+                    <!-- Apellido Materno-->
+                    <div class="form-group">
+                        {{Form::label('genero', 'Genero:',array('class'=>"col-sm-2 control-label" ,'for'=>"textinput"))}}
+
+                        <div class="col-sm-10">
+                            {{Form::text('genero',$value=null,array('placeholder'=>"Apellidos", 'class'=>"form-control"))}}
+                            {{$errors->first('apellidomaterno')}}
+                        </div>
+                    </div>
+                    <!-- Text input-->
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">

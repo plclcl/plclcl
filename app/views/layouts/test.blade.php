@@ -1,7 +1,7 @@
 
 <html>
 <head>
-@include('layouts.include.head')
+@include('layouts.include.libreria')
 </head>
 <body>
     <div id="wrap">

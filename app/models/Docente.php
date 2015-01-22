@@ -1,14 +1,19 @@
-
 <?php
+
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Docente extends Eloquent {
 
-	protected $primaryKey='pk';
 	protected $table = 'docente';
-	public $timestamps=false;
+	public $timestamps = false;
 
+	use SoftDeletingTrait;
 
+	protected $dates = ['deleted_at'];
 
-
+	public function departamento()
+	{
+		return $this->belongsTo('Departamento');
+	}
 
 }
