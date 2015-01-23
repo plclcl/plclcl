@@ -15,7 +15,8 @@ Route::get('/', function()
 {
 	return View::make('portada.index');
 });
-
+Route::get('/login','LoginController@login');
+Route::post('/login','LoginController@validarusuario');
 Route::controller('/p','DocenteController');
 Route::controller('/d','UnidadController');
 Route::controller('/t','TestController');

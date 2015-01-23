@@ -9,6 +9,8 @@ class CreateHorarioTable extends Migration {
 	{
 		Schema::create('horario', function(Blueprint $table) {
 			$table->increments('id');
+			$table->string('periodo');
+			$table->string('dia');
 		});
 	}
 

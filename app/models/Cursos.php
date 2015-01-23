@@ -5,9 +5,14 @@ class Cursos extends Eloquent {
 	protected $table = 'cursos';
 	public $timestamps = false;
 
-	public function asignaturas()
+	public function asignatura()
 	{
-		return $this->hasOne('Asignatura');
+		return $this->belongsTo('Asignatura');
+	}
+
+	public function horarios()
+	{
+		return $this->belongsToMany('Horario');
 	}
 
 }

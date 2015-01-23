@@ -13,6 +13,7 @@ class CreateCursosTable extends Migration {
 			$table->string('anio');
 			$table->string('seccion');
 			$table->bigInteger('docente')->unsigned();
+			$table->bigInteger('asignatura_id')->unsigned();
 		});
 	}
 

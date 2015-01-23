@@ -12,7 +12,7 @@ class Asignatura extends Eloquent {
 
 	public function cursos()
 	{
-		return $this->hasOne('Cursos');
+		return $this->hasMany('Cursos', 'asignatura_id');
 	}
 
 }

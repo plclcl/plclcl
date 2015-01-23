@@ -27,8 +27,13 @@ class CreateForeignKeys extends Migration {
 						->onDelete('no action')
 						->onUpdate('no action');
 		});
+		Schema::table('cursos', function(Blueprint $table) {
+			$table->foreign('asignatura_id')->references('id')->on('asignatura')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
 		Schema::table('asignatura_carrera', function(Blueprint $table) {
-			$table->foreign('curso_id')->references('id')->on('cursos')
+			$table->foreign('carrera_id')->references('id')->on('carrera')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -102,6 +107,16 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
+		Schema::table('curso_horario', function(Blueprint $table) {
+			$table->foreign('curso_id')->references('id')->on('cursos')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
+		Schema::table('curso_horario', function(Blueprint $table) {
+			$table->foreign('horario_id')->references('id')->on('horario')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
 	}
 
 	public function down()
@@ -118,8 +133,11 @@ class CreateForeignKeys extends Migration {
 		Schema::table('cursos', function(Blueprint $table) {
 			$table->dropForeign('cursos_docente_foreign');
 		});
+		Schema::table('cursos', function(Blueprint $table) {
+			$table->dropForeign('cursos_asignatura_id_foreign');
+		});
 		Schema::table('asignatura_carrera', function(Blueprint $table) {
-			$table->dropForeign('asignatura_carrera_curso_id_foreign');
+			$table->dropForeign('asignatura_carrera_carrera_id_foreign');
 		});
 		Schema::table('asignatura_carrera', function(Blueprint $table) {
 			$table->dropForeign('asignatura_carrera_asignatura_id_foreign');
@@ -162,6 +180,12 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('permiso_rol', function(Blueprint $table) {
 			$table->dropForeign('permiso_rol_fk_permiso_foreign');
+		});
+		Schema::table('curso_horario', function(Blueprint $table) {
+			$table->dropForeign('curso_horario_curso_id_foreign');
+		});
+		Schema::table('curso_horario', function(Blueprint $table) {
+			$table->dropForeign('curso_horario_horario_id_foreign');
 		});
 	}
 }
