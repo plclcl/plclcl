@@ -20,13 +20,27 @@ class LoginController extends BaseController {
 		return $this->layout->contenido = View::make('login.login');
 	}
 
+	public function postLogin(){
+		$datosLogin= array(
+			'rut'=>Input::get('rut'),
+			'password'=>Input::get('password')
+		);
+
+if (Auth::attempt($datosLogin)){
+	return "login ok";
+		}else{
+			return 'login fail';
+		}
+	}
+
+/*
 	public function validarusuario(){
 		/*
 		$datousuario = array(
 				'rut'=>Input::get('rut'),
 				'contrasena'=>Input::get('contrasena')
 		);
-*/
+
 		$autentifica= Docente::where('rut','=',Input::get('rut'))->where('contrasena','=',Input::get('contrasena'));
 
 		if($autentifica){
@@ -36,5 +50,5 @@ class LoginController extends BaseController {
 			return Redirect::to('/')->withErrors('login_errors',true);
 		}
 	}
-
+*/
 }

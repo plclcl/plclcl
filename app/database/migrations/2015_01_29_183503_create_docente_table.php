@@ -10,13 +10,15 @@ class CreateDocenteTable extends Migration {
 		Schema::create('docente', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('rut');
-			$table->string('contrasena');
+			$table->string('password');
 			$table->string('nombre');
 			$table->string('apellidopaterno');
 			$table->string('apellidomaterno');
 			$table->string('genero');
+			$table->string('email');
 			$table->softDeletes();
 			$table->bigInteger('fk_departamento')->unsigned();
+			$table->rememberToken();
 		});
 	}
 

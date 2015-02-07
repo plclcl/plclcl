@@ -3,18 +3,20 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateObjetivoTable extends Migration {
+class CreateCarreraTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('objetivo', function(Blueprint $table) {
+		Schema::create('carrera', function(Blueprint $table) {
 			$table->increments('id');
+			$table->string('codigo', 8);
 			$table->string('nombre');
+			$table->bigInteger('fk_escuela')->unsigned();
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('objetivo');
+		Schema::drop('carrera');
 	}
 }

@@ -15,9 +15,19 @@ Route::get('/', function()
 {
 	return View::make('portada.index');
 });
-Route::get('/login','LoginController@login');
-Route::post('/login','LoginController@validarusuario');
+
+
+//Route::post('/login','LoginController@validarusuario');
 Route::controller('/p','DocenteController');
 Route::controller('/d','UnidadController');
 Route::controller('/t','TestController');
 Route::controller('/s','SemanaController');
+//Route::get('login', array('uses' => 'LoginController@showLogin'));
+
+// route to process the form
+//logeo de usuarios
+Route::get('/login','LoginController@login');
+Route::post('login', array('uses' => 'LoginController@postLogin'));
+//From nuevos Docentes
+Route::controller('/newdocente','DocenteController');
+Route::get('ajax-deptcat','DocenteController@dropdownDepartamento');

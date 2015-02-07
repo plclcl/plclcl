@@ -15,4 +15,9 @@ class Carrera extends Eloquent {
 		return $this->hasMany('Planificacion', 'fk_carrera');
 	}
 
+	public function escuela()
+	{
+		return $this->belongsTo('Escuela');
+	}
+
 }

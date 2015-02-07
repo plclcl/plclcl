@@ -17,8 +17,13 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
+		Schema::table('carrera', function(Blueprint $table) {
+			$table->foreign('fk_escuela')->references('id')->on('escuela')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
 		Schema::table('escuela', function(Blueprint $table) {
-			$table->foreign('fk_departamento')->references('id')->on('departamento')
+			$table->foreign('fk_facultad')->references('id')->on('facultad')
 						->onDelete('no action')
 						->onUpdate('no action');
 		});
@@ -43,7 +48,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('planificacion', function(Blueprint $table) {
-			$table->foreign('facultad')->references('id')->on('facultad')
+			$table->foreign('fk_facultad')->references('id')->on('facultad')
 						->onDelete('set null')
 						->onUpdate('set null');
 		});
@@ -67,11 +72,6 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('planificacion', function(Blueprint $table) {
-			$table->foreign('objetivo')->references('id')->on('objetivo')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
 		Schema::table('unidad', function(Blueprint $table) {
 			$table->foreign('semana_fk')->references('id')->on('semana')
 						->onDelete('no action')
@@ -86,6 +86,11 @@ class CreateForeignKeys extends Migration {
 			$table->foreign('fk_unidad')->references('id')->on('unidad')
 						->onDelete('restrict')
 						->onUpdate('restrict');
+		});
+		Schema::table('objetivo', function(Blueprint $table) {
+			$table->foreign('fk_planificacion')->references('id')->on('planificacion')
+						->onDelete('set null')
+						->onUpdate('set null');
 		});
 		Schema::table('docente_rol', function(Blueprint $table) {
 			$table->foreign('docente_id')->references('id')->on('docente')
@@ -127,8 +132,11 @@ class CreateForeignKeys extends Migration {
 		Schema::table('departamento', function(Blueprint $table) {
 			$table->dropForeign('departamento_fk_facultad_foreign');
 		});
+		Schema::table('carrera', function(Blueprint $table) {
+			$table->dropForeign('carrera_fk_escuela_foreign');
+		});
 		Schema::table('escuela', function(Blueprint $table) {
-			$table->dropForeign('escuela_fk_departamento_foreign');
+			$table->dropForeign('escuela_fk_facultad_foreign');
 		});
 		Schema::table('cursos', function(Blueprint $table) {
 			$table->dropForeign('cursos_docente_foreign');
@@ -143,7 +151,7 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('asignatura_carrera_asignatura_id_foreign');
 		});
 		Schema::table('planificacion', function(Blueprint $table) {
-			$table->dropForeign('planificacion_facultad_foreign');
+			$table->dropForeign('planificacion_fk_facultad_foreign');
 		});
 		Schema::table('planificacion', function(Blueprint $table) {
 			$table->dropForeign('planificacion_fk_escuela_foreign');
@@ -157,9 +165,6 @@ class CreateForeignKeys extends Migration {
 		Schema::table('planificacion', function(Blueprint $table) {
 			$table->dropForeign('planificacion_fk_profesor_foreign');
 		});
-		Schema::table('planificacion', function(Blueprint $table) {
-			$table->dropForeign('planificacion_objetivo_foreign');
-		});
 		Schema::table('unidad', function(Blueprint $table) {
 			$table->dropForeign('unidad_semana_fk_foreign');
 		});
@@ -168,6 +173,9 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('contenidounidad', function(Blueprint $table) {
 			$table->dropForeign('contenidounidad_fk_unidad_foreign');
+		});
+		Schema::table('objetivo', function(Blueprint $table) {
+			$table->dropForeign('objetivo_fk_planificacion_foreign');
 		});
 		Schema::table('docente_rol', function(Blueprint $table) {
 			$table->dropForeign('docente_rol_docente_id_foreign');

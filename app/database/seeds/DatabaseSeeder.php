@@ -11,7 +11,15 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
+
+		$this->call('DocenteTableSeeder');
+		$this->command->info('se crea cuenta de administracion');
+
+
 		// $this->call('UserTableSeeder');
+
 	}
+
+
 
 }

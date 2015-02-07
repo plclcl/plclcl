@@ -9,14 +9,13 @@ class CreatePlanificacionTable extends Migration {
 	{
 		Schema::create('planificacion', function(Blueprint $table) {
 			$table->increments('id');
-			$table->bigInteger('facultad')->unsigned()->nullable();
+			$table->bigInteger('fk_facultad')->unsigned()->nullable();
 			$table->bigInteger('fk_escuela')->unsigned();
 			$table->bigInteger('fk_carrera')->unsigned();
 			$table->bigInteger('fk_asignatura')->unsigned();
 			$table->bigInteger('fk_profesor')->unsigned();
-			$table->string('fe');
-			$table->string('semestre');
-			$table->bigInteger('objetivo')->unsigned();
+			$table->date('fechaformulacion');
+			$table->smallInteger('semestre')->unsigned();
 		});
 	}
 

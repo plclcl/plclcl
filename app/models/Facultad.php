@@ -10,4 +10,9 @@ class Facultad extends Eloquent {
 		return $this->hasMany('Departamento', 'fk_facultad');
 	}
 
+	public function escuelas()
+	{
+		return $this->hasMany('Escuela', 'fk_facultad');
+	}
+
 }

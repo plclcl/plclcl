@@ -35,4 +35,9 @@ class Planificacion extends Eloquent {
 		return $this->hasMany('Unidad', 'fk_forma');
 	}
 
+	public function objetivos()
+	{
+		return $this->hasMany('Objetivo', 'fk_planificacion');
+	}
+
 }
