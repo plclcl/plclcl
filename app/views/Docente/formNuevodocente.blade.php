@@ -1,22 +1,31 @@
 @extends('layouts.test')
+
 @section('contenido')
-    
-    {{Form::open(array('url'=>'newdocente/crear','method'=>'post'))}}
+
+    @if(Session::has('mensaje'))
+
+        <h2 style="color: red;">{{ Session::get('mensaje') }}</h2>
+
+    @endif
+
+    {{Form::open(array('url'=>'docente/crear','method'=>'post'))}}
   	<legend>Registro De Nuevos Docentes</legend>
     <div class="form-group">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
         {{Form::label('facultad','Facultad')}}
         {{Form::select('facultad',$facultades,Input::old('facultad'),array('class'=>"form-control"))}}
+            {{$errors->first("facultad")}}
         </div>
+
     </div>
 
     <div class="form-group">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
         {{Form::label('departamento','Departamento')}}
-
-            {{Form::select('departamento',array(),Input::old('departamento'),array('class'=>"form-control"))}}
+        {{Form::select('departamento',array(),Input::old('departamento'),array('class'=>"form-control"))}}
+            {{$errors->first("departamento")}}
         </div>
     </div>
 
@@ -24,37 +33,37 @@
 
           {{Form::label('rut','RUN')}}
           {{Form::text('rut',$value=null,array('class'=>"form-control",'placeholder'=>"12.345.678-9"))}}
-
+          {{$errors->first("rut")}}
       </div>
 
       <div class="form-group">
 
           {{Form::label('nombre','Nombre')}}
           {{Form::text('nombre',$value=null,array('class'=>"form-control",'placeholder'=>"Nombre"))}}
-
+          {{$errors->first("nombre")}}
   	</div>
 
       <div class="form-group">
           {{Form::label('apellidopaterno','Apellido Paterno')}}
           {{Form::text('apellidopaterno',$value=null,array('class'=>"form-control",'placeholder'=>"Apellido Paterno"))}}
-
+          {{$errors->first("apellidopaterno")}}
       </div>
       <div class="form-group">
           {{Form::label('apellidomaterno','Apellido Materno')}}
           {{Form::text('apellidomaterno',$value=null,array('class'=>"form-control",'placeholder'=>"Apellido Materno"))}}
-
+          {{$errors->first("apellidomaterno")}}
       </div>
     <div class="form-group">
 
         {{Form::label('email','E-Mail')}}
         {{Form::text('email',$value=null,array('class'=>"form-control",'placeholder'=>"correo@correo.com"))}}
-
+        {{$errors->first("email")}}
     </div>
       <div class="form-group">
 
           {{Form::label('genero','Sexo')}}
           {{Form::select('genero',array('M'=>'Masculino','F'=>'Femenino'),Input::old('genero'),array('class'=>"form-control"))}}
-
+          {{$errors->first("genero")}}
       </div>
 
 

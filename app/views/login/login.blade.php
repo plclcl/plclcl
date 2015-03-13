@@ -1,5 +1,5 @@
 @extends('layouts.test')
-@section('login')
+@section('contenido')
     {{ Form::open(array('url' => '/login', 'method' => 'POST')) }}
 
     	<legend>Iniciar session</legend>

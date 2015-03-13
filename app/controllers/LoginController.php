@@ -16,11 +16,11 @@ class LoginController extends BaseController {
 	*/
 	protected $layout='layouts.test';
 
-	public function login(){
+	public function get_login(){
 		return $this->layout->contenido = View::make('login.login');
 	}
 
-	public function postLogin(){
+	public function post_login(){
 		$datosLogin= array(
 			'rut'=>Input::get('rut'),
 			'password'=>Input::get('password')

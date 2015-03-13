@@ -19,12 +19,13 @@ class TestController extends BaseController {
 	public function showWelcome()
 	{
 		return View::make('hello');
+
 	}
 
 
 
 	public function get_portada(){
-		return $this->layout->contenido = View::make('portada.index2');
+		return $this->layout->contenido = View::make('portada.inicio');
 	}
 	public function get_testportada(){
 		return View::make('test.portada');
@@ -67,5 +68,42 @@ class TestController extends BaseController {
 	public function semana(){
 		return $this->layout->contenido = View::make('semana.add');
 	}
+
+    //prueba del update de docente
+    public function dropdownDepartamento(){
+        $input=Input::get('fac_id');
+        $input=
+        $departamento=Departamento::where('fk_facultad','=',$input)->get();
+
+        return Response::json($departamento);
+    }
+
+    public function get_update($id){
+        $datosDocentes= Docente::find($id);
+        $facultades=Facultad::lists('nombre','id');
+        //$departamento=$datosDocentes->get('fk_departamento',['fk_departamento']);
+        $departamento=Docente::join('departamento','departamento.id','=','docente.fk_departamento','inner')
+            ->where('docente.id','=',$id)
+            ->get();
+        $sFacultad=Facultad::where('id','=',$departamento->lists('fk_facultad'))->lists('id');
+        return $this->layout->contenido = View::make('Docente.editarDocente')
+                                        ->with('datosDocentes',$datosDocentes)
+                                        ->with('facultades',$facultades)
+                                        ->with('departamento',$departamento->lists('nombre','id'))
+                                        ->with('sFacultad',$sFacultad);
+
+    }
+
+    public function get_crearcarrera(){
+        $facultades=Facultad::lists('nombre','id');
+        return $this->layout->contenido=View::make('Carrera.crearCarrera')->with('facultades',$facultades);
+    }
+    public function get_dropdowncarrera(){
+        $input=Input::get('esc_id');
+        $escuela=Carrera::where('fk_escuela','=',$input)->get();
+        //$departamento=Departamento::where('fk_facultad','=',$input)->get();
+
+        return Response::json($escuela);
+    }
 
 }
