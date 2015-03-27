@@ -31,6 +31,7 @@ if (Auth::attempt($datosLogin)){
 		}else{
 			return 'login fail';
 		}
+        
 	}
 
 /*

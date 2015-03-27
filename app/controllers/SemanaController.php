@@ -15,9 +15,14 @@ class SemanaController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
-	{
-		return View::make('hello');
-	}
+	public function get_index(){
+        return "hola desde semana";
+    }
+    public function get_show($id){}
+    public function get_create(){}
+    public function post_create(){}
+    public function get_update($id){}
+    public function post_update($id){}
+
 
 }

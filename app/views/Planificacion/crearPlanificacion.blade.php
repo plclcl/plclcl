@@ -8,26 +8,26 @@
     	<div class="form-group">
     		<label for=""></label>
             {{Form::label('facultad','Facultad')}}
-            {{Form::select('facultad',$facultades,Input::old('facultad'),array('class'=>'form-control'))}}
+            {{Form::select('facultad',array('SELECIONE UNA FACULTAD','Facultades'=>$facultades),Input::old('facultad'),array('class'=>'form-control','placeholder'=>'Seleccione Facultad'))}}
 
     	</div>
         <div class="form-group">
             <label for=""></label>
             {{Form::label('escuela','Escuela')}}
-            {{Form::select('escuela',array(),Input::old('escuela'),array('class'=>'form-control'))}}
+            {{Form::select('escuela',array('SELECIONE UNA ESCUELA'),Input::old('escuela'),array('class'=>'form-control'))}}
 
         </div>
         <div class="form-group">
             <label for=""></label>
             {{Form::label('carrera','Carrera')}}
-            {{Form::select('carrera',array(),Input::old('carrera'),array('class'=>'form-control'))}}
+            {{Form::select('carrera',array('SELECIONE UNA CARRERA'),Input::old('carrera'),array('class'=>'form-control'))}}
 
         </div>
 
         <div class="form-group">
             <label for=""></label>
             {{Form::label('asignatura','Asignatura')}}
-            {{Form::select('asignatura',array(),Input::old('asignatura'),array('class'=>'form-control'))}}
+            {{Form::select('asignatura',array('SELECIONE UNA ASIGNATURA'),Input::old('asignatura'),array('class'=>'form-control'))}}
 
         </div>
 
@@ -39,7 +39,7 @@
     <!--codigo de dropdown Escuela-->
     <script type="text/javascript">
         $('#facultad').on('change',function(e){
-            // console.log(e);
+             console.log(e);
 
             var facultad_id= e.target.value;
             $.get('/ajax-escucat?facultad_id='+facultad_id,function(data){
@@ -48,7 +48,7 @@
 
                 escuela.empty();
                 $.each(data,function(index,escuObj){
-                    //  console.log(data);
+                      console.log(data);
                     escuela.append('<option value="'+escuObj.id +'">'+escuObj.nombre +'</option>'
 
 
@@ -61,7 +61,7 @@
     <!--codigo de dropdown Carrera-->
     <script type="text/javascript">
         $('#escuela').on('change',function(e){
-            // console.log(e);
+             console.log(e);
 
             var escuela_id= e.target.value;
             $.get('/ajax-carrcat?escuela_id='+escuela_id,function(data){
@@ -70,8 +70,30 @@
 
                 carrera.empty();
                 $.each(data,function(index,carrObj){
-                    //  console.log(data);
+                      console.log(data);
                     carrera.append('<option value="'+carrObj.id +'">'+carrObj.nombre +'</option>'
+
+
+                    );
+                })
+
+            })
+        })
+    </script>
+    <!--codigo de dropdown Carrera-->
+    <script type="text/javascript">
+        $('#carrera').on('change',function(e){
+             console.log(e);
+
+            var carrera_id= e.target.value;
+            $.get('/ajax-asigcat?carrera_id='+carrera_id,function(data){
+
+                var asignatura= $('#asignatura');
+
+                asignatura.empty();
+                $.each(data,function(index,asigObj){
+                      console.log(data);
+                    asignatura.append('<option value="'+asigObj.id +'">'+asigObj.nombre +'</option>'
 
 
                     );

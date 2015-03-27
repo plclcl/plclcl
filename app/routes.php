@@ -17,6 +17,19 @@ Route::get('/dash',function(){
 
     return View::make('layouts.dashboard');
 });
+Route::get('/test',function(){
+   return View::make('test.menu');
+});
+
+Route::get('/inicio',function(){
+    return View::make('vistasprueba.portada');
+
+});
+Route::get('/inicio2',function(){
+    return View::make('vistasprueba.dashBoard');
+
+});
+
 
 
 //Route::post('/login','LoginController@validarusuario');
@@ -27,13 +40,15 @@ Route::controller('/prueba','TestController');
 //Route::get('login', array('uses' => 'LoginController@showLogin'));
 //rutas de prueba de querys
 Route::get('/query',function(){
-        $nombre=Asignatura_carrera::join('asignatura','asignatura.id','=','asignatura_carrera.asignatura_id','inner')
-                                    ->join('carrera','carrera.id','=','asignatura_carrera.carrera_id','inner')
-                                    ->where('carrera_id','=','1');
+        //$nombre=Asignatura_carrera::join('asignatura','asignatura.id','=','asignatura_carrera.asignatura_id','inner')
+          //                          ->join('carrera','carrera.id','=','asignatura_carrera.carrera_id','inner')
+            //                        ->where('carrera_id','=','1');
    // $asignatura=Asignatura::join('asignatura_carrera','asignatura_carrera.asignatura_id','=','asignatura.id','inner')
     //    ->join('carrera','carrera.id','=','asignatura_carrera.carrera_id','inner')
     //->where('');
-    return $nombre;
+
+    $asignatura=Carrera::find(1)->asignaturas()->get()->lists('nombre', 'id');
+    return $asignatura;
 });
 
 // route to process the form
@@ -61,6 +76,15 @@ Route::get('ajax-carrcat',function(){
     $carrera=Carrera::where('fk_escuela','=',$input)->get();
     return Response::json($carrera);
 });
+//DropDorn de asignaturas con carreras
+
+Route::get('ajax-asigcat',function(){
+    $input=Input::get('carrera_id');
+    $asignatura=Carrera::find($input)->asignaturas()->get();
+    return Response::json($asignatura);
+});
+//Asignatura
+Route::controller('asignatura','AsignaturaController');
 //Docentes
 Route::controller('/docente','DocenteController');
 
@@ -82,3 +106,8 @@ Route::controller('/permiso','PermisoController');
 
 //Planificacion
 Route::controller('/planificacion','PlanificacionController');
+
+// Cursos
+Route::controller('/curso', 'CursoController');
+//Semana
+Route::controller('/semana','SemanaController');

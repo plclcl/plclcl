@@ -23,5 +23,5 @@
     {{Form::button('Cancelar',array('class'=>"btn btn-primary"))}}
     {{Form::submit('Ingresar',array('class'=>"btn btn-primary"))}}
     {{Form::close()}}
-
+ 
     @stop

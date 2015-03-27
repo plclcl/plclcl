@@ -6,13 +6,13 @@
         <div class="form-group">
 
             {{Form::label('codigo','Codigo')}}
-            {{Form::text('codigo',$value=null,array('class'=>"form-control",'placeholder'=>"INF-123"))}}
+            {{Form::text('codigo',$asignatura['codigo'],array('class'=>"form-control",'placeholder'=>"INF-123"))}}
 
         </div>
         <div class="form-group">
 
             {{Form::label('nombre','Asignatura')}}
-            {{Form::text('nombre',$value=null,array('class'=>"form-control",'placeholder'=>"Nombre Asignatura"))}}
+            {{Form::text('nombre',$asignatura['nombre'],array('class'=>"form-control",'placeholder'=>"Nombre Asignatura"))}}
 
         </div>
 
