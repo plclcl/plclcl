@@ -17,6 +17,9 @@ class LoginController extends BaseController {
 	protected $layout='layouts.test';
 
 	public function get_login(){
+        if(Auth::check()){
+            return Redirect::to('/');
+        }
 		return $this->layout->contenido = View::make('login.login');
 	}
 
@@ -26,14 +29,20 @@ class LoginController extends BaseController {
 			'password'=>Input::get('password')
 		);
 
-if (Auth::attempt($datosLogin)){
-	return "login ok";
+        if (Auth::attempt($datosLogin)){
+            $usuario=Docente::whereRaw('rut=?',[Input::get('rut')])->get();
+            
+	        return Response::json($usuario);
 		}else{
 			return 'login fail';
 		}
         
 	}
+    public function get_logOut(){
+        Auth::logout();
 
+        return Redirect::to('login')->with('error_message','Session Finalizada');
+    }
 /*
 	public function validarusuario(){
 		/*

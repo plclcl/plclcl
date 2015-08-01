@@ -2,7 +2,7 @@
 
 class Rol extends Eloquent {
 
-	protected $table = 'rol';
+	protected $table = 'roles';
 	public $timestamps = false;
 
 	public function docente()

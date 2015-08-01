@@ -2,7 +2,7 @@
 
 class Docente_rol extends Eloquent {
 
-	protected $table = 'docente_rol';
+	protected $table = 'docentes_roles';
 	public $timestamps = false;
 
 }

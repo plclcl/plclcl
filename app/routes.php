@@ -10,16 +10,17 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+Route::get('/menu',function(){
+    return View::make('Paginas.menu');
+});
 Route::get('/', 'InicioController@inicio');
 
 Route::get('/dash',function(){
 
     return View::make('layouts.dashboard');
 });
-Route::get('/test',function(){
-   return View::make('test.menu');
-});
+Route::get('/test/1','TestController@portada');
+
 
 Route::get('/inicio',function(){
     return View::make('vistasprueba.portada');
@@ -35,26 +36,35 @@ Route::get('/inicio2',function(){
 //Route::post('/login','LoginController@validarusuario');
 
 
-Route::controller('/prueba','TestController');
+
 
 //Route::get('login', array('uses' => 'LoginController@showLogin'));
 //rutas de prueba de querys
 Route::get('/query',function(){
-        //$nombre=Asignatura_carrera::join('asignatura','asignatura.id','=','asignatura_carrera.asignatura_id','inner')
-          //                          ->join('carrera','carrera.id','=','asignatura_carrera.carrera_id','inner')
-            //                        ->where('carrera_id','=','1');
-   // $asignatura=Asignatura::join('asignatura_carrera','asignatura_carrera.asignatura_id','=','asignatura.id','inner')
-    //    ->join('carrera','carrera.id','=','asignatura_carrera.carrera_id','inner')
-    //->where('');
 
-    $asignatura=Carrera::find(1)->asignaturas()->get()->lists('nombre', 'id');
-    return $asignatura;
+    $periodo=2;
+    $dia=Horario::where('periodo','=','1')->get();
+   // $dia=Horario::where('periodo','=',$periodo)->get();
+    return Response::json($dia);
+});
+
+Route::get('reset',function(){
+
+    DB::update("ALTER TABLE docente AUTO_INCREMENT=1;");
 });
 
 // route to process the form
 //logeo de usuarios
 Route::get('/login','LoginController@get_login');
 Route::post('/login', array('uses' => 'LoginController@post_login'));
+//Route::group(['before'=>'auth'],function(){
+  //  Route::get('hola',function(){
+    //    return "hola dentro de grupo";
+    //});
+
+//});
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //******************************rutas de aplicacion******************************/
 //DropDown de Departamentos
@@ -83,8 +93,17 @@ Route::get('ajax-asigcat',function(){
     $asignatura=Carrera::find($input)->asignaturas()->get();
     return Response::json($asignatura);
 });
+
+//dropdown diasPeriodos
+Route::get('ajax-dia',function(){
+    $periodo=Input::get('p_id');
+    $dia=Horario::where('periodo','=',$periodo)->get();
+    return Response::json($dia);
+
+});
 //Asignatura
 Route::controller('asignatura','AsignaturaController');
+Route::controller('asignatura/asociar','AsignaturaCarreraController');
 //Docentes
 Route::controller('/docente','DocenteController');
 
@@ -109,5 +128,9 @@ Route::controller('/planificacion','PlanificacionController');
 
 // Cursos
 Route::controller('/curso', 'CursoController');
+//Unidad
+Route::controller('/unidad','UnidadController');
+//contenido Unidad
+Route::controller('/contenido','ContenidoController');
 //Semana
 Route::controller('/semana','SemanaController');

@@ -2,7 +2,7 @@
 
 class Objetivo extends Eloquent {
 
-	protected $table = 'objetivo';
+	protected $table = 'objetivos';
 	public $timestamps = false;
 
 	public function planificacion()

@@ -2,7 +2,7 @@
 
 class Semana extends Eloquent {
 
-	protected $table = 'semana';
+	protected $table = 'semanas';
 	public $timestamps = false;
 
 	public function unidad()

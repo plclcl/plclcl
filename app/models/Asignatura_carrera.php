@@ -2,7 +2,7 @@
 
 class Asignatura_carrera extends Eloquent {
 
-	protected $table = 'asignatura_carrera';
+	protected $table = 'asignaturas_carreras';
 	public $timestamps = false;
 
 }

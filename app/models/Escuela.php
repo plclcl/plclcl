@@ -2,7 +2,7 @@
 
 class Escuela extends Eloquent {
 
-	protected $table = 'escuela';
+	protected $table = 'escuelas';
 	public $timestamps = false;
 
 	public function facultad()

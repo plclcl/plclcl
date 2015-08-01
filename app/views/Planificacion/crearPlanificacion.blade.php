@@ -3,31 +3,38 @@
 
     <form action="" method="POST" role="form">
         {{Form::open()}}
-    	<legend>Form Title</legend>
+    	<legend>Nueva Planificación</legend>
 
     	<div class="form-group">
-    		<label for=""></label>
+
             {{Form::label('facultad','Facultad')}}
             {{Form::select('facultad',array('SELECIONE UNA FACULTAD','Facultades'=>$facultades),Input::old('facultad'),array('class'=>'form-control','placeholder'=>'Seleccione Facultad'))}}
 
     	</div>
         <div class="form-group">
-            <label for=""></label>
+
             {{Form::label('escuela','Escuela')}}
             {{Form::select('escuela',array('SELECIONE UNA ESCUELA'),Input::old('escuela'),array('class'=>'form-control'))}}
 
         </div>
         <div class="form-group">
-            <label for=""></label>
+
             {{Form::label('carrera','Carrera')}}
             {{Form::select('carrera',array('SELECIONE UNA CARRERA'),Input::old('carrera'),array('class'=>'form-control'))}}
 
         </div>
 
         <div class="form-group">
-            <label for=""></label>
+
             {{Form::label('asignatura','Asignatura')}}
             {{Form::select('asignatura',array('SELECIONE UNA ASIGNATURA'),Input::old('asignatura'),array('class'=>'form-control'))}}
+
+        </div>
+        <div class="form-group">
+
+            {{Form::label('fechaformulacion','Fecha')}}
+            {{Form::input('fechaformulacion','fechaformulacion',null,array('class'=>'form-control'))}}
+
 
         </div>
 

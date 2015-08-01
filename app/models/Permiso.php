@@ -2,7 +2,7 @@
 
 class Permiso extends Eloquent {
 
-	protected $table = 'permiso';
+	protected $table = 'permisos';
 	public $timestamps = false;
 
 	public function rol()

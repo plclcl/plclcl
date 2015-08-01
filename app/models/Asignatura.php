@@ -2,7 +2,7 @@
 
 class Asignatura extends Eloquent {
 
-	protected $table = 'asignatura';
+	protected $table = 'asignaturas';
 	public $timestamps = false;
 
 	public function carreras()
@@ -12,7 +12,16 @@ class Asignatura extends Eloquent {
 
 	public function cursos()
 	{
-		return $this->hasMany('Cursos', 'asignatura_id');
+		return $this->hasMany('Curso', 'asignatura_id');
 	}
+    public static function validate($input){
+        $reglas= array(
+
+            "codigo"=>'required',
+            "nombre"=>'required',
+        );
+        return Validator::make($input, $reglas);
+
+    }
 
 }

@@ -21,18 +21,27 @@ class AsignaturaController extends BaseController {
     }
 
     public function get_crear(){
-        return $this->layout->contenido=View::make('Asignatura.crearAsignatura');
+        $carreras=Carrera::all()->lists('nombre','id');
+        return $this->layout->contenido=View::make('Asignatura.crearAsignatura')->with('carreras',$carreras);
     }
 
     public function post_crear(){
         $input=Input::all();
-        $asignatura= new Asignatura();
+        $validar=Asignatura::validate($input);
 
-        $asignatura->codigo= $input['codigo'];
-        $asignatura->nombre=$input['nombre'];
+        if($validar->fails())
+        {
+            return Redirect::back()->withErrors($validar->messages());
+        }else {
+            $asignatura = new Asignatura();
 
-        $asignatura->save();
+            $asignatura->codigo = $input['codigo'];
+            $asignatura->nombre = $input['nombre'];
 
+            $asignatura->save();
+            //$idcarreras = $input['carreras'];
+            //$asignatura->carreras()->attach($idcarreras);
+        }
 
     }
 
@@ -42,12 +51,20 @@ class AsignaturaController extends BaseController {
     }
     public function post_update($id){
         $input=Input::all();
+        $validar=Asignatura::validate($input);
+
+        if($validar->fails())
+        {
+            return Redirect::back()->withErrors($validar->messages());
+        }else{
         $asignatura=Asignatura::find($id);
 
         $asignatura->codigo=$input['codigo'];
         $asignatura->nombre=$input['nombre'];
 
         $asignatura->save();
+            Session::flash('mensaje','el registro fue correctamente Guardado');
+        }
     }
 
 

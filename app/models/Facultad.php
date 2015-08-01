@@ -2,7 +2,7 @@
 
 class Facultad extends Eloquent {
 
-	protected $table = 'facultad';
+	protected $table = 'facultades';
 	public $timestamps = false;
 
 	public function departamentos()

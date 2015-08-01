@@ -18,7 +18,7 @@ class InicioController extends BaseController {
     protected  $layout='layouts.inicio';
 
     public function inicio(){
-        return $this->layout->contenido= View::make('portada.inicio');
+        return $this->layout->contenido= View::make('layouts.Portada.inicio');
     }
 
 }
